@@ -26,3 +26,7 @@ async def get(id: int, postService: PostService = PostDep) -> PostOut:
     post = postService.get(id)
     return PostOut(**post.__dict__)
 
+@router.delete("/{id}")
+async def delete(id: int, postService: PostService = PostDep) -> dict:
+    postService.delete(id)
+    return {"message": f"Post with id {id} was deleted successfully"}
