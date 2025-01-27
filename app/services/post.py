@@ -21,6 +21,11 @@ class PostService:
         with self.session:
             posts = self.session.query(Post).all()
         return posts
+    
+    def get(self, id: int):
+        with self.session:
+            post = self.session.query(Post).get(id)
+        return post
 
         
         
