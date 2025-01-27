@@ -26,6 +26,9 @@ class PostService:
         with self.session:
             post = self.session.query(Post).get(id)
         return post
+    
+    def update(self):
+        pass
 
         
         
