@@ -16,6 +16,11 @@ class PostService:
             self.session.commit()
             self.session.refresh(post)
         return post
+    
+    def get_all(self):
+        with self.session:
+            posts = self.session.query(Post).all()
+        return posts
 
         
         
