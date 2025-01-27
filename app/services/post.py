@@ -8,6 +8,14 @@ from app.config.database import get_session
 class PostService:
     def __init__(self, session: Session):
         self.session = session
+    
+    def create(self, post_create):
+        with self.session:
+            post = Post(**post_create.model_dump())
+            self.session.add(post)
+            self.session.commit()
+            self.session.refresh(post)
+        return post
 
         
         
