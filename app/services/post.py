@@ -29,7 +29,13 @@ class PostService:
     
     def update(self):
         pass
-
+    
+    def delete(self, id: int) -> None:
+        post = self.get(id)
+        if post == None:
+            raise HTTPException(status_code=404, detail="Post not found")
+        self.session.delete(post)
+        self.session.commit()
         
         
 def get_post_service(session: Session = Depends(get_session)):
