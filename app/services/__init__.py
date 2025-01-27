@@ -1,0 +1,1 @@
+from app.services.post import PostService as PostService
