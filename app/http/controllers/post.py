@@ -16,3 +16,7 @@ async def create(request: PostCreate, postService: PostService = PostDep) -> Pos
     return PostOut(**post.__dict__)
 
 
+@router.get("/")
+async def get_all(postService: PostService = PostDep) -> List[PostOut]:
+    return [PostOut(**post.__dict__) for post in postService.get_all()]
+
