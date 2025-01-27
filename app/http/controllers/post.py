@@ -20,3 +20,9 @@ async def create(request: PostCreate, postService: PostService = PostDep) -> Pos
 async def get_all(postService: PostService = PostDep) -> List[PostOut]:
     return [PostOut(**post.__dict__) for post in postService.get_all()]
 
+
+@router.get("/{id}")
+async def get(id: int, postService: PostService = PostDep) -> PostOut:
+    post = postService.get(id)
+    return PostOut(**post.__dict__)
+
